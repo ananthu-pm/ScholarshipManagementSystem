@@ -1,6 +1,6 @@
 /*
-SQLyog Community v13.1.6 (64 bit)
-MySQL - 5.7.9 : Database - scholarship
+SQLyog Community v13.3.0 (64 bit)
+MySQL - 9.1.0 : Database - scholarship
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.7.9 : Database - scholarship
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`scholarship` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`scholarship` /*!40100 DEFAULT CHARACTER SET latin1 */ /*!80016 DEFAULT ENCRYPTION='N' */;
 
 USE `scholarship`;
 
@@ -21,7 +21,7 @@ USE `scholarship`;
 DROP TABLE IF EXISTS `category`;
 
 CREATE TABLE `category` (
-  `category_id` int(11) NOT NULL AUTO_INCREMENT,
+  `category_id` int NOT NULL AUTO_INCREMENT,
   `category` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`category_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
@@ -36,8 +36,8 @@ insert  into `category`(`category_id`,`category`) values
 DROP TABLE IF EXISTS `college`;
 
 CREATE TABLE `college` (
-  `college_id` int(11) NOT NULL AUTO_INCREMENT,
-  `login_id` int(11) DEFAULT NULL,
+  `college_id` int NOT NULL AUTO_INCREMENT,
+  `login_id` int DEFAULT NULL,
   `fname` varchar(100) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
@@ -55,8 +55,8 @@ insert  into `college`(`college_id`,`login_id`,`fname`,`place`,`phone`,`email`) 
 DROP TABLE IF EXISTS `complaint`;
 
 CREATE TABLE `complaint` (
-  `complaint_id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL,
+  `complaint_id` int NOT NULL AUTO_INCREMENT,
+  `parent_id` int DEFAULT NULL,
   `complaint` varchar(100) DEFAULT NULL,
   `reply` varchar(100) DEFAULT NULL,
   `date` varchar(100) DEFAULT NULL,
@@ -76,8 +76,8 @@ insert  into `complaint`(`complaint_id`,`parent_id`,`complaint`,`reply`,`date`) 
 DROP TABLE IF EXISTS `gallery`;
 
 CREATE TABLE `gallery` (
-  `gallery_id` int(11) NOT NULL AUTO_INCREMENT,
-  `college_id` int(11) DEFAULT NULL,
+  `gallery_id` int NOT NULL AUTO_INCREMENT,
+  `college_id` int DEFAULT NULL,
   `gallery` varchar(1000) DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`gallery_id`)
@@ -94,7 +94,7 @@ insert  into `gallery`(`gallery_id`,`college_id`,`gallery`,`title`) values
 DROP TABLE IF EXISTS `login`;
 
 CREATE TABLE `login` (
-  `login_id` int(11) NOT NULL AUTO_INCREMENT,
+  `login_id` int NOT NULL AUTO_INCREMENT,
   `username` varchar(100) DEFAULT NULL,
   `password` varchar(100) DEFAULT NULL,
   `usertype` varchar(100) DEFAULT NULL,
@@ -122,7 +122,7 @@ insert  into `login`(`login_id`,`username`,`password`,`usertype`) values
 DROP TABLE IF EXISTS `notification`;
 
 CREATE TABLE `notification` (
-  `notification_id` int(11) NOT NULL AUTO_INCREMENT,
+  `notification_id` int NOT NULL AUTO_INCREMENT,
   `notification` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`notification_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -138,9 +138,9 @@ insert  into `notification`(`notification_id`,`notification`) values
 DROP TABLE IF EXISTS `request`;
 
 CREATE TABLE `request` (
-  `request_id` int(11) NOT NULL AUTO_INCREMENT,
-  `scholarship_id` int(11) DEFAULT NULL,
-  `student_id` int(11) DEFAULT NULL,
+  `request_id` int NOT NULL AUTO_INCREMENT,
+  `scholarship_id` int DEFAULT NULL,
+  `student_id` int DEFAULT NULL,
   `date` varchar(100) DEFAULT NULL,
   `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`request_id`)
@@ -157,8 +157,8 @@ insert  into `request`(`request_id`,`scholarship_id`,`student_id`,`date`,`status
 DROP TABLE IF EXISTS `scholarship`;
 
 CREATE TABLE `scholarship` (
-  `scholarship_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category_id` int(11) DEFAULT NULL,
+  `scholarship_id` int NOT NULL AUTO_INCREMENT,
+  `category_id` int DEFAULT NULL,
   `scholarship` varchar(100) DEFAULT NULL,
   `startdate` varchar(100) DEFAULT NULL,
   `enddate` varchar(100) DEFAULT NULL,
@@ -177,9 +177,9 @@ insert  into `scholarship`(`scholarship_id`,`category_id`,`scholarship`,`startda
 DROP TABLE IF EXISTS `school`;
 
 CREATE TABLE `school` (
-  `school_id` int(11) NOT NULL AUTO_INCREMENT,
-  `login_id` int(11) DEFAULT NULL,
-  `school_board_id` int(11) DEFAULT NULL,
+  `school_id` int NOT NULL AUTO_INCREMENT,
+  `login_id` int DEFAULT NULL,
+  `school_board_id` int DEFAULT NULL,
   `fname` varchar(100) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
@@ -198,8 +198,8 @@ insert  into `school`(`school_id`,`login_id`,`school_board_id`,`fname`,`place`,`
 DROP TABLE IF EXISTS `school_board`;
 
 CREATE TABLE `school_board` (
-  `school_board_id` int(11) NOT NULL AUTO_INCREMENT,
-  `login_id` int(11) DEFAULT NULL,
+  `school_board_id` int NOT NULL AUTO_INCREMENT,
+  `login_id` int DEFAULT NULL,
   `fname` varchar(100) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
@@ -217,9 +217,9 @@ insert  into `school_board`(`school_board_id`,`login_id`,`fname`,`place`,`phone`
 DROP TABLE IF EXISTS `seatavailable`;
 
 CREATE TABLE `seatavailable` (
-  `seatavailable_id` int(11) NOT NULL AUTO_INCREMENT,
-  `admission_id` int(11) DEFAULT NULL,
-  `seat_id` int(11) DEFAULT NULL,
+  `seatavailable_id` int NOT NULL AUTO_INCREMENT,
+  `admission_id` int DEFAULT NULL,
+  `seat_id` int DEFAULT NULL,
   `date` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`seatavailable_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -231,14 +231,14 @@ CREATE TABLE `seatavailable` (
 DROP TABLE IF EXISTS `student`;
 
 CREATE TABLE `student` (
-  `student_id` int(11) NOT NULL AUTO_INCREMENT,
+  `student_id` int NOT NULL AUTO_INCREMENT,
   `login_id` varchar(100) DEFAULT NULL,
   `fname` varchar(100) DEFAULT NULL,
   `lname` varchar(100) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
-  `study_id` int(11) DEFAULT NULL,
+  `study_id` int DEFAULT NULL,
   `type` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`student_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
@@ -255,8 +255,8 @@ insert  into `student`(`student_id`,`login_id`,`fname`,`lname`,`place`,`phone`,`
 DROP TABLE IF EXISTS `university`;
 
 CREATE TABLE `university` (
-  `university_id` int(11) NOT NULL AUTO_INCREMENT,
-  `login_id` int(11) DEFAULT NULL,
+  `university_id` int NOT NULL AUTO_INCREMENT,
+  `login_id` int DEFAULT NULL,
   `fname` varchar(100) DEFAULT NULL,
   `place` varchar(100) DEFAULT NULL,
   `phone` varchar(100) DEFAULT NULL,
@@ -274,8 +274,8 @@ insert  into `university`(`university_id`,`login_id`,`fname`,`place`,`phone`,`em
 DROP TABLE IF EXISTS `uploaddetails`;
 
 CREATE TABLE `uploaddetails` (
-  `uploaddetails_id` int(11) NOT NULL AUTO_INCREMENT,
-  `admission_id` int(11) DEFAULT NULL,
+  `uploaddetails_id` int NOT NULL AUTO_INCREMENT,
+  `admission_id` int DEFAULT NULL,
   `title` varchar(100) DEFAULT NULL,
   `files` varchar(1000) DEFAULT NULL,
   `date` varchar(100) DEFAULT NULL,
