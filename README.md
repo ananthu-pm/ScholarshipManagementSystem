@@ -1,47 +1,73 @@
-\# Scholarship Management System 🎓
+# Scholarship Management System
 
-A comprehensive full-stack solution designed to streamline the
-scholarship application process. This project features a \*\*Web-based
-Admin Portal\*\* for managing applications and a \*\*Mobile
-Application\*\* for students to browse and apply for scholarships in
-real-time.
+A comprehensive Scholarship Management System that allows students to view and apply for scholarships, and enables various administrative bodies (University, College, School, School Board) to manage scholarship requests and notifications.
 
-\-\--
+## 🚀 Tech Stack
 
-\## 🚀 Features
+### Web Backend
+- **Framework**: Python Flask
+- **Database**: MySQL
+- **Dependencies**: `mysql-connector-python`, `flask`, `qrcode`, `pillow` (for QR generation)
+- **Architecture**: Blueprint-based modular structure
 
-\### Admin Portal (Web) \* \*\*Dashboard:\*\* Overview of total
-applications, approved, and pending requests. \* \*\*Scholarship
-Management:\*\* Create, update, and delete scholarship schemes. \*
-\*\*Application Review:\*\* View student documents and approve/reject
-applications. \* \*\*User Management:\*\* Monitor registered students
-and their profiles.
+### Android Application
+- **Language**: Java
+- **UI**: XML Layouts
+- **Network**: `HttpURLConnection` (Custom `JsonReq` for API calls)
+- **Minimum SDK**: 21 (Lollipop)
+- **Target SDK**: 32 (Android 12)
 
-\### Student App (Android) \* \*\*User Authentication:\*\* Secure Login
-and Registration system. \* \*\*Scholarship Discovery:\*\* Browse
-available scholarships with eligibility details. \* \*\*Easy
-Application:\*\* Apply for scholarships directly from the mobile
-interface. \* \*\*Status Tracking:\*\* Real-time updates on application
-approval status.
+---
 
-\-\--
+## 📂 Project Structure
 
-\## 🛠️ Tech Stack
+- `web-backend/`: Contains the Flask server, blueprints, and database logic.
+- `android-app/`: Android Studio project for the student/user application.
+- `database/`: Contains the SQL schema file (`scholarship_db.sql`).
 
-\| Component \| Technology Used \| \| :\-\-- \| :\-\-- \| \|
-\*\*Backend\*\* \| Python (Flask) \| \| \*\*Database\*\* \| MySQL \| \|
-\*\*Frontend (Web)\*\* \| HTML5, CSS3, Bootstrap, JavaScript \| \|
-\*\*Mobile App\*\* \| Android Studio (Java, XML) \| \| \*\*API\*\* \|
-RESTful API (JSON) \|
+---
 
-\-\--
+## 🛠️ Setup Instructions
 
-\## 📁 Project Structure
+### Backend Setup
+1. **Database Configuration**:
+   - Import the `database/scholarship_db.sql` file into your MySQL server.
+   - Adjust database credentials in `web-backend/database.py` if necessary.
+2. **Install Dependencies**:
+   ```bash
+   pip install -r web-backend/requirements.txt
+   ```
+3. **Run the Server**:
+   ```bash
+   python web-backend/main.py
+   ```
+   The server will run on `http://0.0.0.0:5008`.
 
-\`\`\`text ScholarshipManagementSystem/ ├── web-backend/ \# Flask Server
-& Web Logic │ ├── app.py \# Main entry point │ ├── templates/ \# HTML
-Frontend files │ ├── static/ \# CSS, Images, and JS │ └──
-requirements.txt \# Python dependencies ├── android-app/ \# Android
-Studio Java Project │ ├── app/src/main/ \# Java Source & XML Layouts │
-└── build.gradle \# App configurations └── database/ \# MySQL database
-scripts └── scholarship.sql \# Database schema & sample data
+### Android App Setup
+1. Open the `android-app/` folder in **Android Studio**.
+2. Update the IP address in the `Ipsettings` class (if applicable) to point to your machine's local IP where the backend is running.
+3. Build and run the app on an emulator or a physical device.
+
+---
+
+## 🔌 API Connections
+
+The Android app communicates with the backend via JSON over HTTP. Major endpoints include:
+
+| Endpoint | Method | Description |
+| :--- | :--- | :--- |
+| `/api/logins` | GET | User authentication |
+| `/api/viewscholarship` | GET | List available scholarships |
+| `/api/sendrequest` | GET | Apply for a scholarship |
+| `/api/Viewrequest` | GET | Check application status |
+| `/api/Viewnotification` | GET | View system notifications |
+| `/api/complaint` | GET | Send student complaints |
+
+---
+
+## 📱 Android App Features
+- **Student Login**: Secure authentication for students.
+- **Scholarship Browsing**: View various scholarships with categories.
+- **Application Tracking**: Real-time status updates on scholarship requests.
+- **Notifications**: Stay updated with the latest scholarship news.
+- **Complaint Management**: Direct communication channel for issues.
